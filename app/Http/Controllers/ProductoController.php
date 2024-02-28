@@ -6,12 +6,21 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $productos = Producto::all();
+        return view('productos.index', compact('productos'));
+    }
+
+    public function createView()
+    {
+        return view('productos.create');
+    }
+
+    public function showEditView(Producto $producto)
+    {
+        // No necesitas devolver la vista de edición, solo mantener la ruta y la función
+        return redirect()->route('productos.index');
     }
 
     /**
